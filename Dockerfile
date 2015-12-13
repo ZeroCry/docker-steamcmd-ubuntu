@@ -1,4 +1,5 @@
 FROM ubuntu:15.04
+MAINTAINER cliffrowley@gmail.com
 
 RUN apt-get update && \
     apt-get install -q -y --no-install-recommends \
@@ -18,5 +19,10 @@ RUN useradd -m steam && \
 WORKDIR /home/steam/steamcmd
 USER steam
 
-ONBUILD ADD install.txt /home/steam/steamcmd/install.txt
-ONBUILD RUN ./steamcmd.sh +runscript install.txt
+ADD install.sh /home/steam/steamcmd/install.sh
+
+ONBUILD RUN ./install.sh
+
+# ONBUILD ADD install.txt /home/steam/steamcmd/install.txt
+# ONBUILD RUN ./steamcmd.sh +runscript install.txt
+# ONBUILD RUN rm -rf /home/steam/steamcmd/install.txt

@@ -10,14 +10,11 @@ This container is intended to be extended rather than used directly.  When build
 
 ### Example
 
-As an example, the following would install the 7 Days to Die dedicated server.
+As an example, the following would install the 7 Days to Die dedicated server:
 
     login <steam user> <steam password>
     force_install_dir ./7dtd
     app_update 294420
-    quit
-
-Note that the `quit` at the end is important, else `steamcmd` will just sit there looking at you.
 
 ## Disclaimer
 
