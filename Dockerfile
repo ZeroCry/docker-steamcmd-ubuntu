@@ -21,7 +21,9 @@ USER steam
 
 ADD install.sh /home/steam/steamcmd/install.sh
 
-ONBUILD RUN ./install.sh
+# ONBUILD ADD ./install.txt /home/steam/steamcmd/install.txt
+# ONBUILD ADD ./credentials.txt /home/steam/steamcmd/credentials.txt
+# ONBUILD RUN ./install.sh && rm -rf /home/steam/steamcmd/credentials.txt
 
 # ONBUILD ADD install.txt /home/steam/steamcmd/install.txt
 # ONBUILD RUN ./steamcmd.sh +runscript install.txt
