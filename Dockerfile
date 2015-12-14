@@ -11,12 +11,11 @@ RUN apt-get update && \
     lib32z1-dev \
     curl
 
-RUN useradd -m steam && \
-    mkdir -p /home/steam/steamcmd && \
-    curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -v -C /home/steam/steamcmd -zx && \
-    chown -R steam:steam /home/steam
+RUN mkdir -p /opt/steam/steamcmd && \
+    curl -s https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz | tar -v -C /opt/steam/steamcmd -zx && \
+    chown -R daemon:daemon /opt/steam
 
-WORKDIR /home/steam/steamcmd
-USER steam
+WORKDIR /opt/steam/steamcmd
+USER daemon
 
-ADD install.sh /home/steam/steamcmd/install.sh
+ADD install.sh /opt/steam/steamcmd/install.sh

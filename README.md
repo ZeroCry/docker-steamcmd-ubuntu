@@ -29,8 +29,8 @@ An appropriate `Dockerfile` could then look like this:
     FROM zobees/steamcmd-ubuntu
     MAINTAINER some@body.com
 
-    USER steam
-    WORKDIR /home/steam/steamcmd
+    USER daemon
+    WORKDIR /opt/steam/steamcmd
     RUN ./install.sh
 
 Then run `docker build .` in the same directory as these files and voila, you should end up with an image containing your Steam game.
@@ -39,9 +39,10 @@ Then run `docker build .` in the same directory as these files and voila, you sh
 
 Bear in mind that you most likely won't be able to use your image without some extra configuration - but that's for you to figure out on a per-game basis.  You could take a look at [zobees/docker-7daystodie](https://github.com/zobees/docker-7daystodie) to see how we're using this image and go from there.
 
-## Known issues
+### Changelog
 
- * Using `steam` user causes pain dealing with permissions in the data volume.  I clearly didn't think about that.  Will fix in the next release (ideas on this welcome, otherwise I may simply use a known entity such as `daemon` or `nobody`).  I haven't created an issue yet, but I will shortly.
+ * **0.0.2** Changed user from `steam` to `daemon` (1000:1000) and moved from `/home/steam` to `/opt/steam`
+ * **0.0.1** Initial release
 
 ## Disclaimer
 
